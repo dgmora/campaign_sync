@@ -7,12 +7,26 @@ module CampaignSync
 
     def self.seed
       connect('development')
+      if ActiveRecord::Base.connection.tables.include?('campaigns')
+        puts 'droping campaigns table'
+        ActiveRecord::Base.connection.execute('DROP TABLE campaigns;')
+      end
       define_schema
+      puts 'seeding'
+      # This one will be different (campaign 11)
       Campaign.create(job_id: 1, external_reference: '1', name: 'A Job',
-                      ad_description: 'foo')
+                      ad_description: 'campaign 11 (different)')
+      # This one will be the same (campaign 12)
+      Campaign.create(job_id: 1, external_reference: '2', name: 'A Job',
+                      ad_description: 'Description for campaign 12',
+                      status: :paused)
+      # This one will be missing remotely
+      Campaign.create(job_id: 1, external_reference: '4', name: 'A Job',
+                      ad_description: 'campaign 14 (missing remotely)')
+      # campaign 13 will be missing locally
     end
 
-    private_class_method def self.connect(env)
+    def self.connect(env)
       config = YAML.load_file('config/database.yml')[env]
       ActiveRecord::Base.establish_connection(config)
     end
