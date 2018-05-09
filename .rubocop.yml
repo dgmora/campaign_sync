@@ -1,0 +1,45 @@
+AllCops:
+  Exclude:
+    - bin/**/*
+    - Guardfile
+  TargetRubyVersion: 2.5
+
+OrderedGems:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 20
+
+Metrics/LineLength:
+  Max: 80
+
+Metrics/MethodLength:
+  Max: 20
+
+Documentation:
+  Enabled: false
+
+Style/BlockDelimiters:
+  Enabled: false
+
+Style/ParallelAssignment:
+  Enabled: false
+
+Style/AccessorMethodName:
+  Enabled: true
+
+Style/MultilineOperationIndentation:
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*_spec.rb'

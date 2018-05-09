@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'campaign_sync'
+
+if ARGV.length == 1 && ARGV.first.casecmp?('seed')
+  CampaignSync::Database.seed
+elsif ARGV.empty?
+  CampaignSync.discrepancies
+else
+  notice
+end
+
+def notice
+  p 'Run this as:'
+  p '    campaign_sync       # Shows discrepancies'
+  p '    campaign_sync seed  # Reseeds the database'
+end
+
