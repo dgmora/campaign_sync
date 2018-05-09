@@ -1,6 +1,5 @@
 RSpec.describe CampaignSync do
   it 'has a version number' do
-    byebug
     expect(CampaignSync::VERSION).not_to be nil
   end
 

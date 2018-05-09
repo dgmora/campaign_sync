@@ -1,0 +1,10 @@
+development:
+  host: 'localhost'
+  adapter: 'sqlite3'
+  encoding: utf-8
+  database: 'syncer'
+test:
+  host: 'localhost'
+  adapter: 'sqlite3'
+  encoding: utf-8
+  database: ':memory:'
